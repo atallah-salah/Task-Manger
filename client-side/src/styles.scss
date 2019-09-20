@@ -1,5 +1,3 @@
-// Import bulma
-@import "../node_modules/bulma/bulma.sass";
 
 // Import Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
@@ -7,14 +5,14 @@
 // Set varibales
 $turquoise: #ff4800;
 $green: #ccd727;
-$light-green: #45f69e; 
-$dark-green: rgb(0, 100, 80);
+$light-green: #ff5e00; 
+$dark-green: rgb(0, 100, 80);;
 
 $light: #f8f8f8;
 
 // Update Bulma global variables
 $family-sans-serif: "Nunito", sans-serif;
-$primary: $green;
+$primary: #ff9323;
 
 $link: $turquoise;
 
@@ -24,8 +22,10 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
-// set custom global style
+// Import bulma
+@import "../node_modules/bulma/bulma.sass";
 
+// set custom global style
 html{
   background: linear-gradient(to right top, $turquoise, $green);
   height: 100%;
