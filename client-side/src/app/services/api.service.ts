@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient  } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  readonly dataAPI:string = 'http://localhost:8080/';
+  readonly dataAPI:string = 'http://localhost:8080';
   
   constructor(private http:HttpClient) { }
 

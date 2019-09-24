@@ -86,8 +86,10 @@
   }
 
   &.complete::after{
-    content: '  - completed';
+    font-weight: bold;
+    content: '  - completed ';
     text-decoration: none;
-
+    float: right;
+    padding: 5px;
   }
 }
