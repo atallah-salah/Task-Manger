@@ -80,13 +80,13 @@
     box-shadow: 0 0 0 5px #eeeeee;
   }
 
-  &.complete{
-    // text-decoration: line-through;
+  &.completed{
+    transition: 0.2s;
     background: rgb(255, 194, 194);
     opacity: 0.8;
   }
 
-  &.complete::after{
+  &.completed::after{
     font-weight: bold;
     content: '  - completed ';
     text-decoration: none;

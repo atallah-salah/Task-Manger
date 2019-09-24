@@ -5,6 +5,14 @@ const { List, Task } = require('./db/models');
 
 const mongoose = require('./db/mongoose');
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.use(bodyParser.json());
 
 // Models
@@ -76,7 +84,7 @@ app.patch('/lists/:listId/tasks/:taskId', (req, res) => {
   }, {
       $set: req.body
     }).then(() => {
-      res.sendStatus(200)
+      res.send({ "message": "Updated successfully." })
     })
 })
 
