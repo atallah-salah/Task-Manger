@@ -25,6 +25,7 @@
 }
 
 .task-list-container{
+  position: relative;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -92,4 +93,14 @@
     float: right;
     padding: 5px;
   }
+}
+
+.circle-add-button{
+  position:absolute;
+  height: 50px;
+  width: 50px;
+  bottom: 35px;
+  right: 35px;
+  border: none;
+  border-radius: 50px;
 }
