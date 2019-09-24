@@ -5,11 +5,9 @@
         Lists
       </h1>
       <ul class="list-menu">
-        <li class="list-menu-item"><p>List 1</p></li>
-        <li class="list-menu-item active">List 2</li>
-
+        <li class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists',list._id]" routerLinkActive="active">{{list.title}}</li>
       </ul>
-      <button class="button is-primary has-text-white" (click)="createNewList()">
+      <button class="button is-primary has-text-white" routerLink="/new-list">
         + New List
       </button>
     </div>
@@ -17,20 +15,8 @@
       <h1 class="title has-text-primary">
         Tasks
       </h1>
-      <ul  class="list-menu">
-        <li class="task complete">item1</li>
-        <li class="task">item1</li>
-        <li class="task complete">item3eeeeeeeeeeeeeeeeeeee e3333333333 jioehwfiowehf whfoiwehfiowehfiowehf whfoiwehfoiwehfoiwe fhwioefhwoeifhwoiehfoiw iefhoishgoisdg g ioshgiosyg spgus9pgys9pdg usdpug9psodug p9sdo9ug90sdopugop dsug 90sdugosud  gu9-ds ug90sdg-usd9- gus-d gu0-9sdu 9-gus0d1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <!-- <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li>
-        <li class="task ">item1</li> -->
-
+      <ul class="list-menu">
+        <li class="task" *ngFor="let task of tasks">{{task.title}}</li>
       </ul>
     </div>
   </div>
