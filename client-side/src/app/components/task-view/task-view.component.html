@@ -19,10 +19,9 @@
         <li class="task" *ngFor="let task of tasks">{{task.title}}</li>
       </ul>
 
-      <button class="circle-add-button button is-primary">
-        <img src="../../../assets/plus.svg" alt="" srcset="">
+      <button routerLink="./new-task" class="circle-add-button button is-primary">
+        <img src="../../../assets/plus.svg">
       </button>
-
     </div>
   </div>
 </section>
