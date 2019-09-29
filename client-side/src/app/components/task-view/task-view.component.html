@@ -12,16 +12,24 @@
       </button>
     </div>
     <div class="task-list-container has-background-light">
-      <h1 class="title has-text-primary">
-        Tasks
-      </h1>
-      <ul class="list-menu">
-        <li class="task" *ngFor="let task of tasks" (click)="onTaskClicked(task)" [ngClass]="{'completed':task.completed}">{{task.title}}</li>
-      </ul>
+      <div *ngIf="tasks">
+        <h1 class="title has-text-primary">
+          Tasks
+        </h1>
+        <ul class="list-menu">
+          <li class="task" *ngFor="let task of tasks" (click)="onTaskClicked(task)" [ngClass]="{'completed':task.completed}">{{task.title}}</li>
+        </ul>
 
-      <button routerLink="./new-task" class="circle-add-button button is-primary">
-        <img src="../../../assets/plus.svg">
-      </button>
+        <h3 class="empty-state-text" *ngIf="tasks.length===0">There are no tasks here Click the add button to create new task.</h3>
+
+        <button routerLink="./new-task" class="circle-add-button button is-primary">
+          <img src="../../../assets/plus.svg">
+        </button>
+      </div>
+
+      <div *ngIf="!tasks">
+        <h3 class="empty-state-text">Please select a list from the sidebar</h3>
+      </div>
     </div>
   </div>
 </section>
