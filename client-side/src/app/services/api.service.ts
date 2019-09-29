@@ -25,4 +25,10 @@ export class ApiService {
     return this.http.delete(`${this.dataAPI}/${url}`);
   }
 
+  login(email:string,password:string){
+    return this.http.post(`${this.dataAPI}/users/login`,{
+      email,
+      password
+    },{observe:"response"})
+  }
 }
