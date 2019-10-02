@@ -9,6 +9,7 @@ import { NewListComponent } from './components/new-list/new-list.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { LoginComponent } from './components/login/login.component';
 import { Interceptor } from './interceptor/interceptor';
+import { SignupComponent } from './components/signup/signup.component';
  
  @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { Interceptor } from './interceptor/interceptor';
     TaskViewComponent,
     NewListComponent,
     NewTaskComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

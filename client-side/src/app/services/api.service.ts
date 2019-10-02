@@ -31,4 +31,11 @@ export class ApiService {
       password
     },{observe:"response"})
   }
+
+  signup(email:string,password:string){
+    return this.http.post(`${this.dataAPI}/users`,{
+      email,
+      password
+    },{observe:"response"})
+  }
 }
