@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskViewComponent } from './components/task-view/task-view.component';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 import { NewListComponent } from './components/new-list/new-list.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { LoginComponent } from './components/login/login.component';
+import { Interceptor } from './interceptor/interceptor';
  
  @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:Interceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

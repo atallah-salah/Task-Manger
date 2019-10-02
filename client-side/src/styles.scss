@@ -29,6 +29,7 @@ $input-shadow: none;
 html{
   background: linear-gradient(to right top, $turquoise, $green);
   height: 100%;
+  overflow: auto;
   body{
     height: 100%;
   }
