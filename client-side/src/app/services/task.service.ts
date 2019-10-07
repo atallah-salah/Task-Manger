@@ -13,6 +13,10 @@ export class TaskService {
     return this.apiService.get("lists");
   }
 
+  deleteList(id: string){
+    return this.apiService.delete(`lists/${id}`);
+  }
+
   getTasks(listId:string){
     return this.apiService.get(`lists/${listId}/tasks`);
   }
