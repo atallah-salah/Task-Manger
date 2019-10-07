@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { Interceptor } from './interceptor/interceptor';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditListComponent } from './components/edit-list/edit-list.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
  
  @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditListComponent } from './components/edit-list/edit-list.component';
     NewTaskComponent,
     LoginComponent,
     SignupComponent,
-    EditListComponent
+    EditListComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

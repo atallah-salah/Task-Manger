@@ -74,6 +74,7 @@
 }
 
 .task{
+  display: flex;
   background: white;
   padding: 15px 20px;
   border-radius: 5px;
@@ -81,12 +82,20 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease , transform 0.2s ease;
 
+  justify-content: center;
+  align-items: center;
+
   &:active{
     transform: scale(0.95);
   }
 
   &:hover{
     box-shadow: 0 0 0 5px #eeeeee;
+
+    .task-buttons{
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   &.completed{
@@ -101,6 +110,17 @@
     text-decoration: none;
     float: right;
     padding: 5px;
+  }
+
+  .task-text{
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .task-buttons{
+    transition: 0.2s;
+    opacity: 0;
+    transform: scale(0.5);
   }
 }
 

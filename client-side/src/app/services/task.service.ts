@@ -25,6 +25,10 @@ export class TaskService {
     return this.apiService.post(`lists`,{title})
   }
 
+  updateList(id: string,title:string){
+    return this.apiService.patch(`lists/${id}`,{title});
+  }
+
   createTask(title:string,listId:string){
     return this.apiService.post(`lists/${listId}/tasks`,{title})
   }
@@ -33,6 +37,14 @@ export class TaskService {
     return this.apiService.patch(`lists/${task._listId}/tasks/${task._id}`,{
       "completed":!task.completed
     })
+  }
+
+  deleteTask(listId:string,taskId:string){
+    return this.apiService.delete(`lists/${listId}/tasks/${taskId}`);
+  }
+
+  updateTask(listId: string,taskId: string,title:string){
+    return this.apiService.patch(`lists/${listId}/tasks/${taskId}`,{title});
   }
 
 }
