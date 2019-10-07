@@ -3,8 +3,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
 
 // Set varibales
-$turquoise: #ff4800;
-$green: #ccd727;
+$turquoise: #ffa13c;
+$turquoise2: #ff4800;
+
+$green: #ff792c;
+$orange1: #ccd727;
+
 $light-green: #ff5e00; 
 $dark-green: rgb(0, 100, 80);;
 
@@ -27,7 +31,7 @@ $input-shadow: none;
 
 // set custom global style
 html{
-  background: linear-gradient(to right top, $turquoise, $green);
+  background: linear-gradient(to right top, $turquoise2, $orange1);
   height: 100%;
   overflow: auto;
   body{
