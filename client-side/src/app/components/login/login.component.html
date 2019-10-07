@@ -19,12 +19,13 @@
         </span>
       </p>
     </div>
-    <div class="field is-pulled-right">
+    <div class="field" style="display: flex;justify-content: flex-end">
       <p class="control">
         <button class="button is-success has-text-white" (click)="onLoginClicked(emailInput.value,passwordInput.value)">
           Login
         </button>
       </p>
     </div>
+    <p class="has-text-grey">Not got an account? <a routerLink="/signup">Sign up </a> now!</p>
   </div>
 </div>
