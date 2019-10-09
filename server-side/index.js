@@ -98,7 +98,7 @@ app.patch('/lists/:id',authenticate, (req, res) => {
   List.findOneAndUpdate({ _id: req.params.id ,_userId:req.user_id}, {
     $set: req.body
   }).then(() => {
-    res.sendStatus(200);
+    res.send({"message":"update success"});
   })
 })
 
@@ -192,7 +192,7 @@ app.delete('/lists/:listId/tasks/:taskId',authenticate, (req, res) => {
         _id: req.params.taskId,
         _listId: req.params.listId
       }).then(() => {
-        res.sendStatus(200)
+        res.send({"message":"success"})
       })
     }else{
       res.sendStatus(404);

@@ -10,15 +10,15 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 
 const routes: Routes = [
-  {path:'' , redirectTo:"lists",pathMatch:"full"},
-  {path:'new-list' , component:NewListComponent},
-  {path:'edit-list/:listId' , component:EditListComponent},
-  {path:'login' , component:LoginComponent},
-  {path:'signup' , component:SignupComponent},
-  {path:'lists' , component:TaskViewComponent },
-  {path:'lists/:listId' , component:TaskViewComponent },
-  {path:'lists/:listId/new-task' , component:NewTaskComponent},
-  {path:'lists/:listId/edit-task/:taskId' , component:EditTaskComponent}
+  {path:'' , redirectTo:"lists",pathMatch:"full", data: {animation: 'Main'}},
+  {path:'new-list' , component:NewListComponent, data: {animation: 'newList'}},
+  {path:'edit-list/:listId' , component:EditListComponent, data: {animation: 'editList'}},
+  {path:'login' , component:LoginComponent, data: {animation: 'Login'}},
+  {path:'signup' , component:SignupComponent, data: {animation: 'Signup'}},
+  {path:'lists' , component:TaskViewComponent , data: {animation: 'Lists'}},
+  {path:'lists/:listId' , component:TaskViewComponent , data: {animation: 'myLists'}},
+  {path:'lists/:listId/new-task' , component:NewTaskComponent, data: {animation: 'newTask'}},
+  {path:'lists/:listId/edit-task/:taskId' , component:EditTaskComponent, data: {animation: 'editTask'}}
 ];
 
 @NgModule({

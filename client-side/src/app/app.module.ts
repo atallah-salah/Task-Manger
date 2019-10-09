@@ -12,7 +12,8 @@ import { Interceptor } from './interceptor/interceptor';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditListComponent } from './components/edit-list/edit-list.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
- 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
  @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:Interceptor,multi:true}
