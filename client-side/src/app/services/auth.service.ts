@@ -1,82 +1,100 @@
-import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { Router } from '@angular/router';
-import { shareReplay,tap } from "rxjs/operators";
-import { HttpResponse, HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { ApiService } from "./api.service";
+import { Router } from "@angular/router";
+import { shareReplay, tap } from "rxjs/operators";
+import { throwError } from "rxjs";
+
+import { HttpResponse, HttpClient } from "@angular/common/http";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
-  constructor(private apiService:ApiService,private router:Router,private http:HttpClient) { 
-
-  }
-
-  login(email:string,password:string){
-    return this.apiService.login(email,password).pipe(
+  login(email: string, password: string) {
+    return this.apiService.login(email, password).pipe(
       shareReplay(),
-      tap((res:HttpResponse<any>)=>{
-        this.setSession(res.body._id,res.headers.get("x-access-token"),res.headers.get("x-refresh-token"));        
-      })
-    )
+      tap(
+        (res: HttpResponse<any>) => {
+          this.setSession(
+            res.body._id,
+            res.headers.get("x-access-token"),
+            res.headers.get("x-refresh-token")
+          );
+        },
+        ({ error }) => error
+      )
+    );
   }
 
-  signup(email:string,password:string){
-    return this.apiService.signup(email,password).pipe(
+  signup(email: string, password: string) {
+    return this.apiService.signup(email, password).pipe(
       shareReplay(),
-      tap((res:HttpResponse<any>)=>{
-        this.setSession(res.body._id,res.headers.get("x-access-token"),res.headers.get("x-refresh-token"));        
+      tap((res: HttpResponse<any>) => {
+        this.setSession(
+          res.body._id,
+          res.headers.get("x-access-token"),
+          res.headers.get("x-refresh-token")
+        );
       })
-    )
+    );
   }
 
-  logout(){ 
-    this.removeSession()
+  logout() {
+    this.removeSession();
 
     this.router.navigate(["/login"]);
   }
 
-  getAcessToken(){
+  getAcessToken() {
     return localStorage.getItem("x-access-token");
   }
 
-  getRefreshToken(){
+  getRefreshToken() {
     return localStorage.getItem("x-refresh-token");
   }
 
-  getUserId(){
+  getUserId() {
     return localStorage.getItem("user-id");
   }
 
-  setAccessToken(accessToken){
-    localStorage.setItem("x-access-token",accessToken)
+  setAccessToken(accessToken) {
+    localStorage.setItem("x-access-token", accessToken);
   }
 
-  private setSession(userId:string,accessToken:string,refreshToken:string){
-    localStorage.setItem("user-id",userId);
-    localStorage.setItem("x-access-token",accessToken);
-    localStorage.setItem("x-refresh-token",refreshToken);
+  private setSession(
+    userId: string,
+    accessToken: string,
+    refreshToken: string
+  ) {
+    localStorage.setItem("user-id", userId);
+    localStorage.setItem("x-access-token", accessToken);
+    localStorage.setItem("x-refresh-token", refreshToken);
   }
 
-
-  private removeSession(){
+  private removeSession() {
     localStorage.removeItem("user-id");
     localStorage.removeItem("x-access-token");
     localStorage.removeItem("x-refresh-token");
   }
 
-  getNewAccessToken(){
-    return this.http.get(`${this.apiService.dataAPI}/users/me/access-token`,{
-      headers:{
-        "x-refresh-token":this.getRefreshToken(),
-        "_id":this.getUserId()
-      },
-      observe:"response"
-    }).pipe(
-      tap((res:HttpResponse<any>)=>{
-        this.setAccessToken(res.headers.get("x-access-token"))
+  getNewAccessToken() {
+    return this.http
+      .get(`${this.apiService.dataAPI}/users/me/access-token`, {
+        headers: {
+          "x-refresh-token": this.getRefreshToken(),
+          _id: this.getUserId(),
+        },
+        observe: "response",
       })
-    )
+      .pipe(
+        tap((res: HttpResponse<any>) => {
+          this.setAccessToken(res.headers.get("x-access-token"));
+        })
+      );
   }
-
 }

@@ -1,4 +1,4 @@
-.centered-content{
+.centered-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,10 +6,19 @@
   height: 100%;
 }
 
-.login-box{
+.login-box {
   width: 350px;
   max-width: 400px;
   background-color: white;
   border-radius: 5px;
   padding: 35px;
+}
+
+.error-message {
+  padding: 8px;
+  background-color: #ffaaaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  color: white;
+  transition: 0.5s;
 }

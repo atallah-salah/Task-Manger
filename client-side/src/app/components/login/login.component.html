@@ -19,9 +19,21 @@
         </span>
       </p>
     </div>
+    <div *ngIf="true" class="error-message"
+      [ngStyle]="{'height': (loginError) ? '36px' : '0px','opacity': (loginError) ? '1' : '0'}">
+      <p>{{loginError || ""}}</p>
+    </div>
+    <div [ngStyle]="{'height': (loading) ? '100px' : '0px','margin-top': (loading) ? '20px' : 'unset'}"
+      style="position: relative;transition:0.3s;">
+      <!-- the position of the parent container must be set to relative -->
+      <!-- It is really important to set loaderId for non-master loader -->
+      <ngx-ui-loader [loaderId]="'loader-02'"></ngx-ui-loader>
+    </div>
+
     <div class="field" style="display: flex;justify-content: flex-end">
       <p class="control">
-        <button class="button is-success has-text-white" (click)="onLoginClicked(emailInput.value,passwordInput.value)">
+        <button [disabled]="loading" class="button is-success has-text-white"
+          (click)="onLoginClicked(emailInput.value,passwordInput.value)">
           Login
         </button>
       </p>

@@ -1,6 +1,5 @@
-
 // Import Fonts
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700");
 
 // Set varibales
 $turquoise: #ffa13c;
@@ -9,8 +8,8 @@ $turquoise2: #ff4800;
 $green: #ff792c;
 $orange1: #ccd727;
 
-$light-green: #ff5e00; 
-$dark-green: rgb(0, 100, 80);;
+$light-green: #ff5e00;
+$dark-green: rgb(0, 100, 80);
 
 $light: #f8f8f8;
 
@@ -19,7 +18,6 @@ $family-sans-serif: "Nunito", sans-serif;
 $primary: #ff9323;
 
 $link: $turquoise;
-
 
 // Update Bulma component variables
 $control-border-width: 2px;
@@ -30,56 +28,69 @@ $input-shadow: none;
 @import "../node_modules/bulma/bulma.sass";
 
 // set custom global style
-html{
+html {
   background: linear-gradient(to left bottom, $turquoise2, #ffd900);
   background-size: 200% 200%;
   animation: animateLinearBackground 10s ease infinite;
   height: 100%;
   overflow: auto;
-  body{
+  body {
     height: 100%;
+
+    button {
+      transition: 0.3s;
+    }
   }
 }
 
 @keyframes animateLinearBackground {
-  0%{background-position:91% 0%}
-  50%{background-position:10% 100%}
-  100%{background-position:91% 0%}
+  0% {
+    background-position: 91% 0%;
+  }
+  50% {
+    background-position: 10% 100%;
+  }
+  100% {
+    background-position: 91% 0%;
+  }
 }
 
-// Route animation - border 
+// Route animation - border
 
 .animatable-route {
   background-repeat: no-repeat;
-  background-image:   linear-gradient(to right, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%),
-                      linear-gradient(to bottom, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%),
-                      linear-gradient(to right, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%),
-                      linear-gradient(to bottom, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%);
+  background-image: linear-gradient(
+      to right,
+      rgb(255, 115, 0) 100%,
+      rgb(255, 115, 0) 100%
+    ),
+    linear-gradient(to bottom, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%),
+    linear-gradient(to right, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%),
+    linear-gradient(to bottom, rgb(255, 115, 0) 100%, rgb(255, 115, 0) 100%);
 
-  background-size:    100% 6px,6px 100%,100% 6px, 6px 100%;
-  background-position:0 0, 100% 0,100% 100%,0 100%;
+  background-size: 100% 6px, 6px 100%, 100% 6px, 6px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
   animation: backgroundBorder 1s ease-in-out;
   animation-play-state: paused;
 }
 
 @keyframes backgroundBorder {
   0% {
-    background-size:0 6px,6px 0,0 6px,6px 0;
+    background-size: 0 6px, 6px 0, 0 6px, 6px 0;
   }
   25% {
-    background-size: 100% 6px,6px 0,0 6px, 6px 0;
+    background-size: 100% 6px, 6px 0, 0 6px, 6px 0;
   }
   50% {
-    background-size: 100% 6px,6px 100%, 0 6px,6px 0;
+    background-size: 100% 6px, 6px 100%, 0 6px, 6px 0;
   }
   75% {
-    background-size: 100% 6px,6px 100%,100% 6px,6px 0;
+    background-size: 100% 6px, 6px 100%, 100% 6px, 6px 0;
   }
   100% {
-    background-size: 100% 6px,6px 100%, 100% 6px,6px 100%;
+    background-size: 100% 6px, 6px 100%, 100% 6px, 6px 100%;
   }
 }
-
 
 .animatable-route:hover {
   // animation-play-state: running;
