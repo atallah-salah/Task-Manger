@@ -210,23 +210,32 @@ app.delete("/lists/:listId/tasks/:taskId", authenticate, (req, res) => {
 
 app.post("/users", (req, res) => {
   let body = req.body;
-  let newUser = new User(body);
 
-  newUser
-    .save()
+  // check if user Exists
+  User.checkUserExists(req.body.email)
     .then(() => {
-      return newUser.createSession();
-    })
-    .then((refreshToken) => {
-      return newUser.generateAccessAuthToken().then((accessToken) => {
-        return { accessToken, refreshToken };
-      });
-    })
-    .then((authTokens) => {
-      res
-        .header("x-refresh-token", authTokens.refreshToken)
-        .header("x-access-token", authTokens.accessToken)
-        .send(newUser);
+      let newUser = new User(body);
+
+      // signup user data
+      newUser
+        .save()
+        .then(() => {
+          return newUser.createSession();
+        })
+        .then((refreshToken) => {
+          return newUser.generateAccessAuthToken().then((accessToken) => {
+            return { accessToken, refreshToken };
+          });
+        })
+        .then((authTokens) => {
+          res
+            .header("x-refresh-token", authTokens.refreshToken)
+            .header("x-access-token", authTokens.accessToken)
+            .send(newUser);
+        })
+        .catch((error) => {
+          res.status(400).send(error);
+        });
     })
     .catch((error) => {
       res.status(400).send(error);
