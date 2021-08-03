@@ -1,4 +1,4 @@
-.centered-content{
+.centered-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,14 +6,16 @@
   height: 100%;
 }
 
-.modal-box{
+.modal-box {
   min-height: 200px;
   width: 100%;
   max-width: 580px;
   background-color: white;
   border-radius: 5px;
   padding: 35px;
-  .title{
-    font-size: 26px;  
+  box-shadow: 0px 0px 10px 1px #ff6400;
+
+  .title {
+    font-size: 26px;
   }
 }

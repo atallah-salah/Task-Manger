@@ -20,6 +20,7 @@ import {
   POSITION,
   PB_DIRECTION,
 } from "ngx-ui-loader";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: "#ff792c",
@@ -49,7 +50,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   textColor: "#FFFFFF",
   textPosition: "center-center",
   maxTime: -1,
-  minTime: -1,
+  minTime: 300,
 };
 
 @NgModule({
@@ -68,6 +69,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxSkeletonLoaderModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   providers: [

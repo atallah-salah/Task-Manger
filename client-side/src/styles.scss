@@ -1,5 +1,6 @@
 // Import Fonts
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700");
+@import "~bulma-tooltip";
 
 // Set varibales
 $turquoise: #ffa13c;
@@ -95,3 +96,5 @@ html {
 .animatable-route:hover {
   // animation-play-state: running;
 }
+
+// for tooltip

@@ -34,13 +34,16 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.apiService.signup(email, password).pipe(
       shareReplay(),
-      tap((res: HttpResponse<any>) => {
-        this.setSession(
-          res.body._id,
-          res.headers.get("x-access-token"),
-          res.headers.get("x-refresh-token")
-        );
-      })
+      tap(
+        (res: HttpResponse<any>) => {
+          this.setSession(
+            res.body._id,
+            res.headers.get("x-access-token"),
+            res.headers.get("x-refresh-token")
+          );
+        },
+        ({ error }) => error
+      )
     );
   }
 
