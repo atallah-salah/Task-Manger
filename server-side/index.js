@@ -1,4 +1,5 @@
 const express = require("express");
+var cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 const { List, Task, User } = require("./db/models");
@@ -17,6 +18,8 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Expose-Headers", "x-access-token, x-refresh-token");
   next();
 });
+
+app.use(cors());
 
 let authenticate = (req, res, next) => {
   let token = req.header("x-access-token");
@@ -288,6 +291,6 @@ let deleteTasksFromList = (_listId) => {
   });
 };
 
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("server is run on 8080");
 });

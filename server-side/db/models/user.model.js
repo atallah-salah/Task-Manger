@@ -100,7 +100,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
       bcrypt.compare(password, user.password, (error, res) => {
         if (res) resolve(user);
         else {
-          reject();
+          reject({ status: "400", messageType: "error", message: "Wrong username or password" });
         }
       });
     });
