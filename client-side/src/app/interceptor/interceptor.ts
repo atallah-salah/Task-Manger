@@ -15,6 +15,8 @@ export class Interceptor implements HttpInterceptor {
   intercept(req:HttpRequest<any>,next:HttpHandler):Observable<any>{
     req = this.addAuthHeader(req);
 
+
+
     return next.handle(req).pipe(
       catchError(error =>{
         console.log(error);
@@ -24,9 +26,11 @@ export class Interceptor implements HttpInterceptor {
           return this.refreshAccessToken().pipe(
             switchMap(()=>{
               req = this.addAuthHeader(req);
+
               return next.handle(req);
             }),
             catchError((error:any)=>{
+
               console.log(error);
               this.authSservice.logout();
               return empty();
@@ -39,7 +43,9 @@ export class Interceptor implements HttpInterceptor {
   }
 
   refreshAccessToken(){
-    if(this.accessTokenRefreshed){
+
+    if(this.refreshingAccessToken){
+
       return new Observable(observer=>{
         this.accessTokenRefreshed.subscribe(()=>{
           observer.next();
@@ -50,6 +56,7 @@ export class Interceptor implements HttpInterceptor {
       this.refreshingAccessToken =true;
       return this.authSservice.getNewAccessToken().pipe(
         tap(()=>{
+
           this.refreshingAccessToken =false;
           console.log("Accress token refreshed");
           this.accessTokenRefreshed.next();

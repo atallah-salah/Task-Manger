@@ -10,7 +10,10 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   get(url: string) {
-    return this.http.get(`${this.dataAPI}/${url}`);
+        return this.http.get(
+      `${this.dataAPI}/${url}`,
+      // { observe: "response" }
+    );
   }
 
   post(url: string, payload: Object) {

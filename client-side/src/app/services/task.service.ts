@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Task } from '../models/task.model';
+import { shareReplay, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,16 @@ export class TaskService {
   
   getLists(){
     return this.apiService.get("lists");
+
+    // return this.apiService.get("lists").pipe(
+    //       shareReplay(),
+    //       tap(
+    //         (res: HttpResponse<any>) => {
+    //           return res
+    //         },
+    //         ({ error }) => error
+    //       )
+    //     );
   }
 
   deleteList(id: string){

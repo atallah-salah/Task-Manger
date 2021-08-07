@@ -10,6 +10,8 @@ import { Task } from 'src/app/models/task.model';
 })
 export class NewTaskComponent implements OnInit {
   listId:string;
+  title:any = "";
+
 
   constructor(private taskService:TaskService,private route:ActivatedRoute,private router:Router) { }
   
@@ -18,6 +20,10 @@ export class NewTaskComponent implements OnInit {
       this.listId = params['listId'];
     })
   }
+
+    changeInput({target:{value}}) {
+    this.title=value
+    }
 
   createNewTask(title:string){    
     this.taskService.createTask(title,this.listId).subscribe((newTask:Task)=>{

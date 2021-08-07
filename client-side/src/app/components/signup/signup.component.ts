@@ -48,7 +48,11 @@ export class SignupComponent implements OnInit {
     }
 
     if (password) {
-      successCount += 1;
+      if (password.length > 7) {
+        successCount += 1;
+      } else {
+        this.loginError = "Password must be at least 8 char";
+      }
     } else {
       this.loginError = "Please Enter password";
     }

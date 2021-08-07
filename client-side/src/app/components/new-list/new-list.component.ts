@@ -9,11 +9,19 @@ import { List } from 'src/app/models/list.model';
   styleUrls: ['./new-list.component.scss']
 })
 export class NewListComponent implements OnInit {
+  title:any = "";
+
   constructor(private taskService:TaskService,private router:Router) { }
 
   ngOnInit() {
   }
   
+
+changeInput({target:{value}}) {
+  this.title=value
+  }
+
+
   createNewList(title:string){
     this.taskService.createList(title).subscribe((list:List)=>{
       this.router.navigate(['/lists',list._id])

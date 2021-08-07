@@ -33,7 +33,7 @@
 
     <div class="field" style="display: flex;justify-content: flex-end">
       <p class="control">
-        <button class="button is-success has-text-white"
+        <button class="button is-success has-text-white" [disabled]="loading"
           (click)="onSignupClicked(emailInput.value,passwordInput.value)">
           Sign up
         </button>

@@ -1,3 +1,5 @@
+import { AuthGuardLoggedIn } from "./services/loggedIn.guard";
+import { AuthGuard } from "./services/auth.guard";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -73,6 +75,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   providers: [
+    AuthGuard,
+    AuthGuardLoggedIn,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent],

@@ -3,11 +3,11 @@
       <h2 class="title">
         Create a new task
       </h2>
-      <input #tastTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name...">
+      <input #tastTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter task name..." (input)="changeInput($event)">
       <br><br>
       <div class="buttons is-right">
         <button class="button is-medium" routerLink="/">Cancel</button>
-        <button class="button is-primary is-medium" (click)="createNewTask(tastTitleInput.value)">Create</button>
+        <button class="button is-primary is-medium" (click)="createNewTask(tastTitleInput.value)" [disabled]="!title">Create</button>
       </div>
     </div>
   </div>

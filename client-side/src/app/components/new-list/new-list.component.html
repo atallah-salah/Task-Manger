@@ -3,11 +3,11 @@
     <h2 class="title">
       Create a new list
     </h2>
-    <input #listTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter list name...">
+    <input #listTitleInput class="input has-background-light is-medium" type="text" placeholder="Enter list name..." (input)="changeInput($event)" >
     <br><br>
     <div class="buttons is-right">
       <button class="button is-medium" routerLink="/">Cancel</button>
-      <button class="button is-primary is-medium" (click)="createNewList(listTitleInput.value)">Create</button>
+      <button class="button is-primary is-medium" (click)="createNewList(listTitleInput.value)" [disabled]="!title">Create</button>
     </div>
   </div>
 </div>
